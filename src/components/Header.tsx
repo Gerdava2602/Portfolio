@@ -3,16 +3,15 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 
-const colors = ["black", "white", "white", "white"];
-
 interface IHeaderProps {
-  slide: number;
+  color: string;
+  onLogo: () => void;
 }
 
-const Header: React.FunctionComponent<IHeaderProps> = ({ slide }) => {
+const Header: React.FunctionComponent<IHeaderProps> = ({ color, onLogo }) => {
   return (
     <header style={{ background: "transparent" }}>
-      <div className="logo">
+      <div className="logo" onClick={onLogo}>
         <svg
           version="1.0"
           xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +22,7 @@ const Header: React.FunctionComponent<IHeaderProps> = ({ slide }) => {
         >
           <g
             transform="translate(0.000000,1200.000000) scale(0.100000,-0.100000)"
-            fill={colors[slide]}
+            fill={color}
             stroke="none"
             style={{ transition: "1.5s" }}
           >
@@ -45,17 +44,17 @@ l703 0 0 -932 -1 -931 -94 -73 c-233 -180 -566 -329 -846 -380 -121 -22 -405
       <div className="icons">
         <div className="icon email">
           <a href="">
-            <FontAwesomeIcon icon={faEnvelope} color={colors[slide]} />
+            <FontAwesomeIcon icon={faEnvelope} color={color} />
           </a>
         </div>
         <div className="icon github">
           <a href="">
-            <FontAwesomeIcon icon={faGithub} color={colors[slide]} />
+            <FontAwesomeIcon icon={faGithub} color={color} />
           </a>
         </div>
         <div className="icon linkedin">
           <a href="">
-            <FontAwesomeIcon icon={faLinkedin} color={colors[slide]} />
+            <FontAwesomeIcon icon={faLinkedin} color={color} />
           </a>
         </div>
       </div>

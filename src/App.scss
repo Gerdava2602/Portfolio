@@ -1,6 +1,6 @@
 $main-blue: #1D3557;
-$second: #7B886B;
-$third: #774E24;
+$second: #C9BCEF;
+$third: #7779A7;
 $night: #090C08;
 
 html {
@@ -25,6 +25,10 @@ header {
     svg {
       width: 100%;
       height: 100%;
+    }
+
+    svg:hover {
+      transform: none;
     }
   }
 
@@ -103,6 +107,17 @@ header {
   }
 }
 
+.categories {
+  width: 70%;
+}
+
+.skills {
+  background-color: $night;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
 @media only screen and (max-width: 768px) {
   .slideshow {
     flex-wrap: wrap;
@@ -115,7 +130,6 @@ header {
 }
 
 .show {
-  background-color: $second;
   color: white;
   width: 100vw;
   height: 100%;
@@ -125,21 +139,6 @@ header {
   align-items: center;
   flex-direction: column;
 
-  .info {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin-top: 3.1em;
-    justify-content: center;
-
-    h1 {
-      min-width: 200px;
-      font-size: 3rem;
-      font-weight: 700;
-      text-align: center;
-    }
-  }
-
   .carousel {
     display: flex;
     flex-direction: row;
@@ -148,43 +147,29 @@ header {
     width: 50%;
     position: relative;
 
-    .back {
-      position: absolute;
-      top: calc(50% - 2rem);
-      background: transparent;
-      left: 0;
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      transition: 0.6s;
-    }
-
-    .next {
-      position: absolute;
-      top: calc(50% - 2rem);
-      background: transparent;
-      right: 0;
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      transition: 0.6s;
-    }
-
     .image {
-      width: 35em;
+      width: 70%;
       display: flex;
       flex-direction: column;
       flex: 0 0 100%;
       align-items: center;
       transition: 1s;
 
+      .source {
+        transform: none;
+      }
+
       img {
-        width: 25em;
-        height: 25em;
+        width: 25rem;
+        height: 25rem;
         border-radius: 100%;
         -webkit-box-shadow: 0px 0px 33px -12px rgba(255, 255, 255, 0.75);
         -moz-box-shadow: 0px 0px 33px -12px rgba(255, 255, 255, 0.75);
         box-shadow: 0px 0px 33px -12px rgba(255, 255, 255, 0.75);
+      }
+
+      h2 {
+        margin: 1rem 0 0 0;
       }
 
       p {
@@ -195,20 +180,60 @@ header {
   }
 }
 
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-top: 6em;
+  justify-content: center;
+
+  h1 {
+    min-width: 200px;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+  }
+}
+
+.skillRow {
+  overflow-x: scroll;
+  display: flex;
+
+  .card {
+    width: 5rem;
+    margin: 0 1rem 0 1rem;
+
+    h3 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    img {
+      width: 5rem;
+      height: 5rem;
+      margin-bottom: 0;
+    }
+  }
+
+}
+
+.category {
+  margin-top: 0;
+}
+
 .description {
   width: 60%;
   text-align: center;
   font-size: 1.3rem;
-  text-align: start;
 }
 
-.third {
+.fullStack {
+  background-color: $second;
+}
+
+.dataScience {
   background-color: $third;
-  color: white;
-}
-
-.Forth {
-  background-color: $night;
   color: white;
 }
 
@@ -230,9 +255,8 @@ header {
   left: 1rem
 }
 
-.trans:hover {
-  background: white;
-  transition: 0.5s;
+svg:hover {
+  transform: scale(1.5);
 }
 
 .roller {
@@ -281,6 +305,24 @@ footer {
   width: 100%;
   height: 2.5rem;
   transition: 0.6s;
+}
+
+.beat {
+  animation: beat 2s infinite;
+}
+
+@keyframes beat {
+
+  0%,
+  50%,
+  100% {
+    transform: scale(1, 1);
+  }
+
+  30%,
+  80% {
+    transform: scale(1.2, 1.2);
+  }
 }
 
 @media (max-width: 768px) {

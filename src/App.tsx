@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import "./App.scss";
 import profilePicture from "./assets/image.jpeg";
 import Carousel from "./components/Carousel";
 import Header from "./components/Header";
 import Arrow from "./components/Arrow";
 import Footer from "./components/Footer";
+import "./App.scss";
+import { fullStackProjects } from "./constants/projects";
+import { colors } from "./constants/colors";
+import SkillRow from "./components/SkillRow";
 
 function App() {
   const [slide, setSlide] = useState(0);
@@ -13,9 +16,13 @@ function App() {
     slide === document.querySelectorAll(".slide").length && setSlide(0);
   }, [slide]);
 
+  const onLogo = () => {
+    setSlide(0);
+  };
+
   return (
     <>
-      <Header slide={slide} />
+      <Header color={colors[slide]} onLogo={onLogo} />
       <div className="slideshow">
         <div className="slide" style={{ marginLeft: `${-slide * 100}%` }}>
           <div className="content">
@@ -23,9 +30,9 @@ function App() {
               I am Germán Vargas
               <div className="roller">
                 <span id="rolltext">
-                  FullStack developer
-                  <br />
                   Software Engineer
+                  <br />
+                  FullStack developer
                   <br />
                   Data Scientist
                   <br />
@@ -53,7 +60,7 @@ function App() {
             <img src={profilePicture} alt="Imagen" />
           </div>
         </div>
-        <div className="slide show">
+        <div className="slide show fullStack">
           <div className="info">
             <h1>Full Stack development</h1>
           </div>
@@ -65,24 +72,46 @@ function App() {
             </p>
           </div>
           <Carousel
-            data={[
-              {
-                image: profilePicture,
-                title: "Full Stack development",
-                description:
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi doloribus dolores, quod quas cum corporis et, nulla ipsum aspernatur quidem, sed quibusdam. Nulla cumque eveniet aliquam mollitia libero deserunt!",
-              },
-              {
-                image: profilePicture,
-                title: "Front development",
-                description:
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sequi doloribus dolores, quod quas cum corporis et, nulla ipsum aspernatur quidem, sed quibusdam. Nulla cumque eveniet aliquam mollitia libero deserunt!",
-              },
-            ]}
+            data={fullStackProjects.map((project) => ({
+              ...project,
+              image: profilePicture,
+            }))}
           />
         </div>
-        <div className="slide third">Hi</div>
-        <div className="slide Forth">Hi</div>
+        <div className="slide show dataScience">
+          <div className="info">
+            <h1>Data science & Artificial Intelligence</h1>
+          </div>
+          <div className="description">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+              quia, repellat, nisi repudiandae at quisquam ullam vero, incidunt
+              ducimus ratione facere natus distinctio reiciendis? Laborum
+              placeat nulla neque sint ullam.
+            </p>
+          </div>
+          <Carousel
+            data={fullStackProjects.map((project) => ({
+              ...project,
+              image: profilePicture,
+            }))}
+          />
+        </div>
+        <div className="slide skills">
+          <div className="info">
+            <h1>Skills</h1>
+          </div>
+          <div className="categories">
+            <h2 className="category">Languages</h2>
+            <SkillRow skills={[{ title: "pic", image: profilePicture }]} />
+            <h2 className="category">Backend frameworks</h2>
+            <SkillRow skills={[{ title: "pic", image: profilePicture }]} />
+            <h2 className="category">Frontend frameworks</h2>
+            <SkillRow skills={[{ title: "pic", image: profilePicture }]} />
+            <h2 className="category">Devops</h2>
+            <SkillRow skills={[{ title: "pic", image: profilePicture }]} />
+          </div>
+        </div>
         <Arrow right slide={slide} setSlide={setSlide} maxSlide={4} color />
         <Arrow
           right={false}

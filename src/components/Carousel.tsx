@@ -1,5 +1,7 @@
 import * as React from "react";
 import Arrow from "./Arrow";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 interface ICarouselProps {
   data: {
@@ -19,8 +21,17 @@ const Carousel: React.FunctionComponent<ICarouselProps> = ({ data }) => {
           className="image"
           style={{ marginLeft: idx == 0 ? `${-slide * 100}%` : "" }}
         >
-          <img src={item.image} alt="Imagen" />
-          <h3>{item.title}</h3>
+          <img src={item.image} alt={item.title} />
+          <h2>
+            {item.title}{" "}
+            <a href="">
+              <FontAwesomeIcon
+                className="source beat"
+                color={"white"}
+                icon={faGithub}
+              />
+            </a>
+          </h2>
           <p>{item.description}</p>
         </div>
       ))}
