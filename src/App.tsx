@@ -4,7 +4,7 @@ import Carousel from "./components/Carousel";
 import Header from "./components/Header";
 import Arrow from "./components/Arrow";
 import Footer from "./components/Footer";
-import { fullStackProjects } from "./constants/projects";
+import { dataScienceProjects, fullStackProjects } from "./constants/projects";
 import { colors } from "./constants/colors";
 import SkillRow from "./components/SkillRow";
 import "./App.scss";
@@ -58,15 +58,16 @@ function App() {
             </h1>
             <div className="text">
               <p>
-                I am a software engineer characterized by my insightful,
-                passionate and resilient approach to problem solving. I love the
-                world of technology, interested in multiple paths such as
-                full-stack development, cloud services, software engineering and
-                DevOps. Due to my experience, I have been part of the creation
-                of several applications and have been involved in all the
-                fundamental steps (Design, development, deployment, testing)
-                which makes me an all-round developer who is happy to help in
-                the process.
+                I am a software engineer known for my insightful, passionate,
+                and resilient approach to problem-solving. I have a strong
+                interest in the world of technology and enjoy exploring various
+                paths, including full-stack development, cloud services,
+                software engineering, and DevOps. Thanks to my experience, I
+                have contributed to the creation of several applications and
+                have been involved in all the essential steps, such as design,
+                development, deployment, and testing. This makes me a
+                well-rounded developer who is eager to assist throughout the
+                entire process.
               </p>
             </div>
           </div>
@@ -80,9 +81,11 @@ function App() {
           </div>
           <div className="description">
             <p>
-              I have worked as a full-stack dev in several companies. I have
-              created products from scratch and have been involved in all the
-              steps of the process.
+              I have worked as a full-stack developer, handling all stages of
+              development from requirements to deployment. I have deep knowledge
+              of front-end and back-end technologies, proficient in multiple
+              programming languages and frameworks. I deliver high-quality
+              software solutions.
             </p>
           </div>
           <Carousel
@@ -98,12 +101,15 @@ function App() {
           </div>
           <div className="description">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-              quia, repellat, nisi repudiandae at quisquam ullam vero, incidunt
+              I am a certified data scientist passionate about AI and data. I
+              graduated from the DS4A course by Correlation One and have
+              certificates from Google and Azure. My expertise includes data
+              analysis, visualization, model tuning, and Python for scientific
+              purposes.
             </p>
           </div>
           <Carousel
-            data={fullStackProjects.map((project) => ({
+            data={dataScienceProjects.map((project) => ({
               ...project,
               image: profilePicture,
             }))}
