@@ -22,6 +22,9 @@ import {
 function App() {
   const [slide, setSlide] = useState(0);
   const [color, setColor] = useState(colors[slide]);
+
+  const mobile = window.innerWidth < 1200;
+
   useEffect(() => {
     slide === document.querySelectorAll(".slide").length && setSlide(0);
     setColor(colors[slide]);
@@ -30,10 +33,6 @@ function App() {
   const onLogo = () => {
     setSlide(0);
   };
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth < 768) setSlide(0);
-  });
 
   return (
     <>
@@ -101,8 +100,6 @@ function App() {
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
               quia, repellat, nisi repudiandae at quisquam ullam vero, incidunt
-              ducimus ratione facere natus distinctio reiciendis? Laborum
-              placeat nulla neque sint ullam.
             </p>
           </div>
           <Carousel
@@ -110,7 +107,7 @@ function App() {
               ...project,
               image: profilePicture,
             }))}
-            color={slide == 0 ? colors[2] : color}
+            color={mobile ? colors[2] : color}
           />
         </div>
         <div className="slide skills">
@@ -154,7 +151,7 @@ function App() {
           maxSlide={4}
           color={color}
         />
-        <Footer color={color} />
+        <Footer color={mobile ? "white" : color} />
       </div>
     </>
   );
