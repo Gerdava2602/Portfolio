@@ -1,12 +1,11 @@
 import * as React from "react";
-import { colors } from "../constants/colors";
 
 interface IFooterProps {
-  slide: number;
+  color?: string;
 }
 
-const Footer: React.FunctionComponent<IFooterProps> = ({ slide }) => {
-  return <footer style={{ color: colors[slide] }}>@2023 Germán Vargas</footer>;
+const Footer: React.FunctionComponent<IFooterProps> = ({ color }) => {
+  return <footer style={{ color: color }}>@2023 Germán Vargas</footer>;
 };
 
 export default Footer;

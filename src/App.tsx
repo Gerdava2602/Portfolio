@@ -4,25 +4,40 @@ import Carousel from "./components/Carousel";
 import Header from "./components/Header";
 import Arrow from "./components/Arrow";
 import Footer from "./components/Footer";
-import "./App.scss";
 import { fullStackProjects } from "./constants/projects";
 import { colors } from "./constants/colors";
 import SkillRow from "./components/SkillRow";
+import "./App.scss";
+import {
+  backend,
+  cloud,
+  dataScience,
+  databases,
+  devops,
+  frontend,
+  languages,
+  testing,
+} from "./constants/skills";
 
 function App() {
   const [slide, setSlide] = useState(0);
-
+  const [color, setColor] = useState(colors[slide]);
   useEffect(() => {
     slide === document.querySelectorAll(".slide").length && setSlide(0);
+    setColor(colors[slide]);
   }, [slide]);
 
   const onLogo = () => {
     setSlide(0);
   };
 
+  window.addEventListener("resize", () => {
+    if (window.innerWidth < 768) setSlide(0);
+  });
+
   return (
     <>
-      <Header color={colors[slide]} onLogo={onLogo} />
+      <Header color={color} onLogo={onLogo} />
       <div className="slideshow">
         <div className="slide" style={{ marginLeft: `${-slide * 100}%` }}>
           <div className="content">
@@ -95,6 +110,7 @@ function App() {
               ...project,
               image: profilePicture,
             }))}
+            color={slide == 0 ? colors[2] : color}
           />
         </div>
         <div className="slide skills">
@@ -102,26 +118,44 @@ function App() {
             <h1>Skills</h1>
           </div>
           <div className="categories">
-            <h2 className="category">Languages</h2>
-            <SkillRow skills={[{ title: "pic", image: profilePicture }]} />
-            <h2 className="category">Backend frameworks</h2>
-            <SkillRow skills={[{ title: "pic", image: profilePicture }]} />
-            <h2 className="category">Frontend frameworks</h2>
-            <SkillRow skills={[{ title: "pic", image: profilePicture }]} />
-            <h2 className="category">Devops</h2>
-            <SkillRow skills={[{ title: "pic", image: profilePicture }]} />
+            <div className="column">
+              <h2 className="category">Languages</h2>
+              <SkillRow skills={languages} />
+              <h2 className="category">Backend</h2>
+              <SkillRow skills={backend} />
+              <h2 className="category">Frontend</h2>
+              <SkillRow skills={frontend} />
+              <h2 className="category">Devops</h2>
+              <SkillRow skills={devops} />
+            </div>
+            <div className="column">
+              <h2 className="category">Databases</h2>
+              <SkillRow skills={databases} />
+              <h2 className="category">Testing</h2>
+              <SkillRow skills={testing} />
+              <h2 className="category">Data science</h2>
+              <SkillRow skills={dataScience} />
+              <h2 className="category">Cloud</h2>
+              <SkillRow skills={cloud} />
+            </div>
           </div>
         </div>
-        <Arrow right slide={slide} setSlide={setSlide} maxSlide={4} color />
+        <Arrow
+          right
+          slide={slide}
+          setSlide={setSlide}
+          maxSlide={4}
+          color={color}
+        />
         <Arrow
           right={false}
           slide={slide}
           setSlide={setSlide}
           maxSlide={4}
-          color
+          color={color}
         />
+        <Footer color={color} />
       </div>
-      <Footer slide={slide} />
     </>
   );
 }

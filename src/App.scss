@@ -1,5 +1,5 @@
 $main-blue: #1D3557;
-$second: #C9BCEF;
+$pyyellow: #FFD166;
 $third: #7779A7;
 $night: #090C08;
 
@@ -95,8 +95,8 @@ header {
       justify-content: center;
 
       img {
-        width: 35em;
-        height: 35em;
+        width: 35rem;
+        height: 35rem;
         object-fit: cover;
         border-radius: 100%;
         -webkit-box-shadow: 0px 0px 33px -12px rgba(0, 0, 0, 0.75);
@@ -116,17 +116,6 @@ header {
   color: white;
   display: flex;
   flex-direction: column;
-}
-
-@media only screen and (max-width: 768px) {
-  .slideshow {
-    flex-wrap: wrap;
-    overflow: visible;
-  }
-
-  .arrow {
-    display: none;
-  }
 }
 
 .show {
@@ -192,20 +181,33 @@ header {
     font-size: 3rem;
     font-weight: 700;
     text-align: center;
-    margin: 0;
+    margin: 0 0 1rem 0;
+  }
+}
+
+.categories {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+
+  .column {
+    width: 45%;
   }
 }
 
 .skillRow {
-  overflow-x: scroll;
+  overflow-y: hidden;
   display: flex;
 
   .card {
     width: 5rem;
-    margin: 0 1rem 0 1rem;
+    margin: 0 1.5rem 0 1.5rem;
 
     h3 {
       text-align: center;
+      text-wrap: wrap;
+      overflow-wrap: break-word;
       margin-top: 0;
     }
 
@@ -216,10 +218,15 @@ header {
     }
   }
 
+  .card:hover {
+    transform: scale(1.03);
+    transition: 0.6s;
+  }
+
 }
 
 .category {
-  margin-top: 0;
+  margin-bottom: 0.3em;
 }
 
 .description {
@@ -229,12 +236,12 @@ header {
 }
 
 .fullStack {
-  background-color: $second;
+  background-color: $third;
 }
 
 .dataScience {
-  background-color: $third;
-  color: white;
+  background-color: $main-blue;
+  color: $pyyellow;
 }
 
 .arrow {
@@ -321,16 +328,85 @@ footer {
 
   30%,
   80% {
-    transform: scale(1.2, 1.2);
+    transform: scale(1.1, 1.1);
   }
 }
 
-@media (max-width: 768px) {
-  .content {
+@media only screen and (max-width: 1200px) {
 
-    h1 {
-      font-size: 1rem;
-      font-weight: 700;
+  header {
+    position: static;
+  }
+
+  .slide {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .content {
+      max-height: 70%;
+      justify-content: center;
+      width: 80%;
+      left: 0;
+
+      .text {
+        width: 90%;
+        max-height: 10%;
+        font-size: 0.5rem;
+        text-align: justify;
+      }
+
+      h1 {
+        min-width: 200px;
+        font-size: 4rem;
+        font-weight: 700;
+      }
     }
+
+    .image {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 15rem;
+        height: 15rem;
+        object-fit: cover;
+        border-radius: 100%;
+        -webkit-box-shadow: 0px 0px 33px -12px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 33px -12px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 33px -12px rgba(0, 0, 0, 0.75);
+      }
+    }
+  }
+
+  .slideshow {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  .skillRow {
+    overflow-x: scroll;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .categories {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .column {
+      width: 80%;
+    }
+  }
+
+  footer {
+    position: static;
+    background-color: $night;
+    color: white;
   }
 }

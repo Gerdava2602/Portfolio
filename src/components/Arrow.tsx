@@ -1,14 +1,13 @@
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
-import { colors } from "../constants/colors";
 
 interface IArrowProps {
   right: boolean;
   slide: number;
   setSlide: (slide: number) => void;
   maxSlide: number;
-  color?: boolean;
+  color?: string;
 }
 
 const Arrow: React.FunctionComponent<IArrowProps> = ({
@@ -16,7 +15,7 @@ const Arrow: React.FunctionComponent<IArrowProps> = ({
   slide,
   setSlide,
   maxSlide,
-  color = false,
+  color,
 }) => {
   const onClick = () => {
     if (right) {
@@ -37,7 +36,7 @@ const Arrow: React.FunctionComponent<IArrowProps> = ({
       icon={right ? faArrowRight : faArrowLeft}
       className={right ? "arrow right" : "arrow left"}
       onClick={onClick}
-      color={color ? colors[slide] : "white"}
+      color={color ? color : "white"}
       style={styles}
     />
   );

@@ -9,9 +9,10 @@ interface ICarouselProps {
     title: string;
     description: string;
   }[];
+  color?: string;
 }
 
-const Carousel: React.FunctionComponent<ICarouselProps> = ({ data }) => {
+const Carousel: React.FunctionComponent<ICarouselProps> = ({ data, color }) => {
   const [slide, setSlide] = React.useState(0);
 
   return (
@@ -27,7 +28,7 @@ const Carousel: React.FunctionComponent<ICarouselProps> = ({ data }) => {
             <a href="">
               <FontAwesomeIcon
                 className="source beat"
-                color={"white"}
+                color={color ? color : "white"}
                 icon={faGithub}
               />
             </a>
@@ -35,12 +36,19 @@ const Carousel: React.FunctionComponent<ICarouselProps> = ({ data }) => {
           <p>{item.description}</p>
         </div>
       ))}
-      <Arrow maxSlide={data.length} right setSlide={setSlide} slide={slide} />
+      <Arrow
+        maxSlide={data.length}
+        right
+        setSlide={setSlide}
+        slide={slide}
+        color={color}
+      />
       <Arrow
         maxSlide={data.length}
         right={false}
         setSlide={setSlide}
         slide={slide}
+        color={color}
       />
     </div>
   );
