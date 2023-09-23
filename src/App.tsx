@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import profilePicture from "./assets/image.jpeg";
+import profilePicture from "./assets/images/image.jpeg";
 import Carousel from "./components/Carousel";
 import Header from "./components/Header";
 import Arrow from "./components/Arrow";
@@ -8,22 +8,15 @@ import { dataScienceProjects, fullStackProjects } from "./constants/projects";
 import { colors } from "./constants/colors";
 import SkillRow from "./components/SkillRow";
 import "./App.scss";
-import {
-  backend,
-  cloud,
-  dataScience,
-  databases,
-  devops,
-  frontend,
-  languages,
-  testing,
-} from "./constants/skills";
+import { skills } from "./constants/skills";
 
 function App() {
   const [slide, setSlide] = useState(0);
   const [color, setColor] = useState(colors[slide]);
 
   const mobile = window.innerWidth < 1200;
+
+  console.log(mobile);
 
   useEffect(() => {
     slide === document.querySelectorAll(".slide").length && setSlide(0);
@@ -77,7 +70,7 @@ function App() {
         </div>
         <div className="slide show fullStack">
           <div className="info">
-            <h1>Full Stack development</h1>
+            <h1 id="fullstack">Full Stack development</h1>
           </div>
           <div className="description">
             <p>
@@ -88,12 +81,7 @@ function App() {
               software solutions.
             </p>
           </div>
-          <Carousel
-            data={fullStackProjects.map((project) => ({
-              ...project,
-              image: profilePicture,
-            }))}
-          />
+          <Carousel data={fullStackProjects} />
         </div>
         <div className="slide show dataScience">
           <div className="info">
@@ -109,10 +97,7 @@ function App() {
             </p>
           </div>
           <Carousel
-            data={dataScienceProjects.map((project) => ({
-              ...project,
-              image: profilePicture,
-            }))}
+            data={dataScienceProjects}
             color={mobile ? colors[2] : color}
           />
         </div>
@@ -123,23 +108,23 @@ function App() {
           <div className="categories">
             <div className="column">
               <h2 className="category">Languages</h2>
-              <SkillRow skills={languages} />
+              <SkillRow skills={skills.languages} />
               <h2 className="category">Backend</h2>
-              <SkillRow skills={backend} />
+              <SkillRow skills={skills.backend} />
               <h2 className="category">Frontend</h2>
-              <SkillRow skills={frontend} />
+              <SkillRow skills={skills.frontend} />
               <h2 className="category">Devops</h2>
-              <SkillRow skills={devops} />
+              <SkillRow skills={skills.devops} />
             </div>
             <div className="column">
               <h2 className="category">Databases</h2>
-              <SkillRow skills={databases} />
+              <SkillRow skills={skills.databases} />
               <h2 className="category">Testing</h2>
-              <SkillRow skills={testing} />
+              <SkillRow skills={skills.testing} />
               <h2 className="category">Data science</h2>
-              <SkillRow skills={dataScience} />
+              <SkillRow skills={skills.dataScience} />
               <h2 className="category">Cloud</h2>
-              <SkillRow skills={cloud} />
+              <SkillRow skills={skills.cloud} />
             </div>
           </div>
         </div>

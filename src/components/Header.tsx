@@ -43,17 +43,20 @@ l703 0 0 -932 -1 -931 -94 -73 c-233 -180 -566 -329 -846 -380 -121 -22 -405
       </div>
       <div className="icons">
         <div className="icon email">
-          <a href="">
+          <a href="mailto: germandavidvargas06@gmail.com">
             <FontAwesomeIcon icon={faEnvelope} color={color} />
           </a>
         </div>
         <div className="icon github">
-          <a href="">
+          <a href="https://github.com/Gerdava2602" target="_blank">
             <FontAwesomeIcon icon={faGithub} color={color} />
           </a>
         </div>
         <div className="icon linkedin">
-          <a href="">
+          <a
+            href="https://www.linkedin.com/in/germ%C3%A1n-david-vargas-ramos/"
+            target="_blank"
+          >
             <FontAwesomeIcon icon={faLinkedin} color={color} />
           </a>
         </div>

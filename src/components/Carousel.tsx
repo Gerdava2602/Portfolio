@@ -8,6 +8,7 @@ interface ICarouselProps {
     image: string;
     title: string;
     description: string;
+    source?: string;
   }[];
   color?: string;
 }
@@ -25,13 +26,15 @@ const Carousel: React.FunctionComponent<ICarouselProps> = ({ data, color }) => {
           <img src={item.image} alt={item.title} />
           <h2>
             {item.title}{" "}
-            <a href="">
-              <FontAwesomeIcon
-                className="source beat"
-                color={color ? color : "white"}
-                icon={faGithub}
-              />
-            </a>
+            {item.source && (
+              <a href={item.source} target="_blank">
+                <FontAwesomeIcon
+                  className="source beat"
+                  color={color ? color : "white"}
+                  icon={faGithub}
+                />
+              </a>
+            )}
           </h2>
           <p>{item.description}</p>
         </div>
