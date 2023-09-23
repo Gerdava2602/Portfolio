@@ -290,8 +290,8 @@ svg:hover {
   overflow: hidden;
   width: 100%;
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
   color: $main-blue;
 
   #rolltext {
